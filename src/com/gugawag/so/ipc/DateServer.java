@@ -17,17 +17,18 @@ public class DateServer{
 		try {
 			ServerSocket sock = new ServerSocket(6013);
 
-			System.out.println("=== Servidor iniciado ===");
-			// now listen for connections
+			System.out.println("=== Servidor iniciado ===\n");
+			// escutando por conexões
 			while (true) {
 				Socket client = sock.accept();
-				// we have a connection
+				// Se chegou aqui, foi porque algum cliente se comunicou
+				System.out.println("Servidor recebeu comunicação.");
 				PrintWriter pout = new PrintWriter(client.getOutputStream(), true);
 
-				// write the Date to the socket
+				// Escreve a data atual no socket
 				pout.println(new java.util.Date().toString());
 
-				// close the socket and resume listening for more connections
+				// fechar o socket e volta no loop para escutar novas conexões
 				client.close();
 			}
 		}

@@ -20,7 +20,7 @@ public class DateClient {
 			InputStream in = sock.getInputStream();
 			BufferedReader bin = new BufferedReader(new InputStreamReader(in));
 
-			System.out.println("=== Cliente iniciado ===");
+			System.out.println("=== Cliente iniciado ===\n");
 
 			String line;
 			while( (line = bin.readLine()) != null)
