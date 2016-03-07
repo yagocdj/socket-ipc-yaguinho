@@ -9,12 +9,10 @@ package com.gugawag.so.ipc;
  * Operating System Concepts  - Ninth Edition
  * Copyright John Wiley & Sons - 2013.
  */
- 
 import java.net.*;
 import java.io.*;
 
-public class DateServer
-{
+public class DateServer{
 	public static void main(String[] args)  {
 		try {
 			ServerSocket sock = new ServerSocket(6013);
@@ -24,8 +22,8 @@ public class DateServer
 			while (true) {
 				Socket client = sock.accept();
 				// we have a connection
-				
 				PrintWriter pout = new PrintWriter(client.getOutputStream(), true);
+
 				// write the Date to the socket
 				pout.println(new java.util.Date().toString());
 
