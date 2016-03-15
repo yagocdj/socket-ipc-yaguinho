@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/chat-ipc.iml" filepath="$PROJECT_DIR$/chat-ipc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/socket-ipc.iml" filepath="$PROJECT_DIR$/socket-ipc.iml" />
     </modules>
   </component>
 </project>

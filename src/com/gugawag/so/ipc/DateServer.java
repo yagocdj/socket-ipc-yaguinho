@@ -11,6 +11,7 @@ package com.gugawag.so.ipc;
  */
 import java.net.*;
 import java.io.*;
+import java.util.Date;
 
 public class DateServer{
 	public static void main(String[] args)  {
@@ -22,11 +23,18 @@ public class DateServer{
 			while (true) {
 				Socket client = sock.accept();
 				// Se chegou aqui, foi porque algum cliente se comunicou
-				System.out.println("Servidor recebeu comunicação.");
+				System.out.println("Servidor recebeu comunicação do ip: " + client.getInetAddress() + "-" + client.getPort());
 				PrintWriter pout = new PrintWriter(client.getOutputStream(), true);
 
 				// Escreve a data atual no socket
-				pout.println(new java.util.Date().toString());
+				pout.println(new Date().toString() + "-Boa noite alunos!");
+
+				InputStream in = client.getInputStream();
+				BufferedReader bin = new BufferedReader(new InputStreamReader(in));
+
+				String line;
+				while( (line = bin.readLine()) != null)
+					System.out.println("O cliente me disse:" + line);
 
 				// fechar o socket e volta no loop para escutar novas conexões
 				client.close();

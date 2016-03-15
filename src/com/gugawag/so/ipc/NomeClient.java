@@ -7,17 +7,18 @@ package com.gugawag.so.ipc;
  *
  * @author Silberschatz, Gagne and Galvin. Pequenas alterações feitas por Gustavo Wagner (gugawag@gmail.com)
  * Operating System Concepts  - Eighth Edition
- */ 
+ */
 
-import java.net.*;
 import java.io.*;
+import java.net.Socket;
+import java.util.Date;
 
-public class DateClient {
+public class NomeClient {
 	public static void main(String[] args)  {
 		try {
 			// this could be changed to an IP name or address other than the localhost
-			Socket sock = new Socket("192.168.1.228",6013);
-			InputStream in = sock.getInputStream();
+			Socket servidorSock = new Socket("127.0.0.1",6013);
+			InputStream in = servidorSock.getInputStream();
 			BufferedReader bin = new BufferedReader(new InputStreamReader(in));
 
 			System.out.println("=== Cliente iniciado ===\n");
@@ -25,8 +26,11 @@ public class DateClient {
 			String line;
 			while( (line = bin.readLine()) != null)
 				System.out.println("O servidor me disse:" + line);
-				
-			sock.close();
+
+			PrintWriter pout = new PrintWriter(servidorSock.getOutputStream(), true);
+			// TODO Altere abaixo para enviar seu nome ao servidor
+			pout.println("SEU NOME AQUI");
+			servidorSock.close();
 		}
 		catch (IOException ioe) {
 				System.err.println(ioe);
