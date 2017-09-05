@@ -32,9 +32,8 @@ public class DateServer{
 				InputStream in = client.getInputStream();
 				BufferedReader bin = new BufferedReader(new InputStreamReader(in));
 
-				String line;
-				while( (line = bin.readLine()) != null)
-					System.out.println("O cliente me disse:" + line);
+				String line = bin.readLine();
+				System.out.println("O cliente me disse:" + line);
 
 				// fechar o socket e volta no loop para escutar novas conexões
 				client.close();

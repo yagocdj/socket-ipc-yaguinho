@@ -23,9 +23,8 @@ public class NomeClient {
 
 			System.out.println("=== Cliente iniciado ===\n");
 
-			String line;
-			while( (line = bin.readLine()) != null)
-				System.out.println("O servidor me disse:" + line);
+			String line = bin.readLine();
+			System.out.println("O servidor me disse:" + line);
 
 			PrintWriter pout = new PrintWriter(servidorSock.getOutputStream(), true);
 			// TODO Altere abaixo para enviar seu nome ao servidor
